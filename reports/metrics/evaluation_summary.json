@@ -1,0 +1,11 @@
+{
+    "threshold": 0.9000000000000002,
+    "confusion_matrix": {
+        "true_negative": 42647,
+        "false_positive": 1,
+        "false_negative": 28,
+        "true_positive": 46
+    },
+    "roc_auc": 0.9692468389886791,
+    "pr_auc": 0.8434258140658979
+}
