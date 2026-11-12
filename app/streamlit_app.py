@@ -172,11 +172,11 @@ def feature_importance_frame(bundle):
 def metric_percent(metrics, key):
     value = metrics.get(key)
     if value is None:
-        return "N/A"
+        return "0.00%"
     try:
         return f"{float(value):.2%}"
     except (TypeError, ValueError):
-        return "N/A"
+        return "0.00%"
 
 
 def dataset_required_message():
@@ -284,6 +284,11 @@ def get_label_name(data):
     return "Status not available"
 
 
+def navigate_to(page_name):
+    """Navigate to a page using the sidebar navigation state."""
+    st.session_state["page_navigation"] = page_name
+
+
 # ============================================================
 # SIDEBAR
 # ============================================================
@@ -307,6 +312,7 @@ with st.sidebar:
             "Dashboard", "Predict Transaction", "Batch Prediction",
             "Transactions", "Model Performance", "Data Insights", "Documentation",
         ],
+        key="page_navigation",
     )
     st.divider()
     st.caption("Credit Card Fraud Detection")
@@ -329,9 +335,9 @@ if page == "Dashboard":
     st.subheader("Overview")
 
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Active Transactions", f"{total_transactions:,}" if dataset_available else "N/A")
-    c2.metric("Potential Fraud", f"{fraud_transactions:,}" if dataset_available and analysis_column else "N/A")
-    c3.metric("Legitimate", f"{legitimate_transactions:,}" if dataset_available and analysis_column else "N/A")
+    c1.metric("Active Transactions", f"{total_transactions:,}" if dataset_available else "0")
+    c2.metric("Potential Fraud", f"{fraud_transactions:,}" if dataset_available and analysis_column else "0")
+    c3.metric("Legitimate", f"{legitimate_transactions:,}" if dataset_available and analysis_column else "0")
     c4.metric("Model ROC-AUC", metric_percent(TEST_METRICS, "roc_auc"))
 
     if dataset_available:
@@ -404,21 +410,33 @@ if page == "Dashboard":
     st.subheader("Quick Actions")
     a1, a2, a3 = st.columns(3)
     with a1:
-        if st.button("🔍 Predict a Transaction", use_container_width=True):
-            st.info("Select 'Predict Transaction' from the sidebar.")
+        st.button(
+            "🔍 Predict a Transaction",
+            use_container_width=True,
+            on_click=navigate_to,
+            args=("Predict Transaction",),
+        )
     with a2:
-        if st.button("📁 Batch Prediction", use_container_width=True):
-            st.info("Select 'Batch Prediction' from the sidebar.")
+        st.button(
+            "📁 Batch Prediction",
+            use_container_width=True,
+            on_click=navigate_to,
+            args=("Batch Prediction",),
+        )
     with a3:
-        if st.button("📊 Model Insights", use_container_width=True):
-            st.info("Select 'Model Performance' from the sidebar.")
+        st.button(
+            "📊 Model Insights",
+            use_container_width=True,
+            on_click=navigate_to,
+            args=("Model Performance",),
+        )
 
     st.markdown('<div class="section-line"></div>', unsafe_allow_html=True)
     st.subheader("Dataset Summary")
     s1, s2, s3, s4 = st.columns(4)
-    s1.metric("Dataset Shape", f"{df.shape[0]:,} × {df.shape[1]}" if dataset_available else "N/A")
-    s2.metric("Missing Values", f"{missing_values:,}" if dataset_available else "N/A")
-    s3.metric("Duplicate Rows", f"{duplicate_rows:,}" if dataset_available else "N/A")
+    s1.metric("Dataset Shape", f"{df.shape[0]:,} × {df.shape[1]}" if dataset_available else "0")
+    s2.metric("Missing Values", f"{missing_values:,}" if dataset_available else "0")
+    s3.metric("Duplicate Rows", f"{duplicate_rows:,}" if dataset_available else "0")
     s4.metric("Features", f"{number_of_features:,}")
     if dataset_available:
         st.caption(f"Currently displaying: {dataset_source}")
