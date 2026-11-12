@@ -1,179 +1,185 @@
 # 🛡️ FraudGuard — Credit Card Fraud Detection System
 
 <p align="center">
-  <strong>Detect Today. Safer Tomorrow.</strong><br>
+  <strong>Detect Today. Safer Tomorrow.</strong><br/>
   An end-to-end machine learning application for identifying potentially fraudulent credit card transactions.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.13-blue?logo=python" />
-  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--learn-orange?logo=scikitlearn" />
-  <img src="https://img.shields.io/badge/Frontend-Streamlit-FF4B4B?logo=streamlit" />
-  <img src="https://img.shields.io/badge/Testing-Sample%20CSV-0A9EDC" />
-  <img src="https://img.shields.io/badge/Status-Portfolio%20Project-success" />
+  <a href="https://fraud-guard63.streamlit.app/"><strong>🚀 Try the Live App</strong></a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/ajity202/Credit-card-fraud-detection"><strong>📂 GitHub Repository</strong></a>
 </p>
 
 <p align="center">
-  <a href="https://fraud-guard63.streamlit.app/">🚀 Live Demo</a> ·
-  <a href="https://github.com/ajity202/Credit-card-fraud-detection">GitHub Repository</a>
+  <img src="https://img.shields.io/badge/Python-3.13-blue?logo=python" alt="Python"/>
+  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--learn-orange?logo=scikitlearn" alt="Scikit-learn"/>
+  <img src="https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi" alt="FastAPI"/>
+  <img src="https://img.shields.io/badge/Frontend-Streamlit-FF4B4B?logo=streamlit" alt="Streamlit"/>
+  <img src="https://img.shields.io/badge/Testing-Pytest-0A9EDC?logo=pytest" alt="Pytest"/>
+  <img src="https://img.shields.io/badge/Status-Portfolio%20Project-success" alt="Portfolio project"/>
 </p>
 
 ---
 
 ## 🚀 Overview
 
-Credit card fraud detection is a challenging classification problem because fraudulent transactions represent only a very small fraction of overall transaction activity.
+Credit card fraud is difficult to detect because fraudulent transactions represent only a small fraction of all transaction activity.
 
-**FraudGuard** is a machine learning project that predicts whether a credit card transaction may be fraudulent. It brings together data validation, exploratory data analysis, preprocessing, class-imbalance handling, model training and evaluation, model serialization, and an interactive Streamlit application.
+**FraudGuard** is an end-to-end machine learning project that predicts potentially fraudulent credit card transactions. It brings together data validation, exploratory data analysis, preprocessing, imbalanced-class learning, model evaluation, a REST API and an interactive Streamlit application.
 
-The deployed application supports single-transaction prediction and batch CSV prediction. After a batch file is processed, its predictions and dataset summaries are available across the Dashboard, Transactions, and Data Insights pages for the current Streamlit session.
+The project demonstrates how a trained machine learning model can be made accessible through a web application, including single-transaction and batch CSV prediction workflows.
 
-> **Note:** FraudGuard is an educational portfolio project and decision-support demonstration. It is not a banking-grade fraud prevention service.
+## 🌐 Live Application
+
+**[Open FraudGuard on Streamlit Cloud](https://fraud-guard63.streamlit.app/)**
+
+The deployed application includes:
+- Interactive dashboard
+- Single transaction prediction
+- Batch CSV prediction
+- Transaction exploration
+- Model performance metrics
+- Data insights and documentation
+
+> **Demo tip:** Use the sample file included in this repository (`creditcard_1.csv`) to test Batch Prediction. Upload it in the Batch Prediction section and generate predictions. The processed batch becomes the active dataset for the dashboard and other dataset-based sections during that app session.
 
 ## ✨ Key Features
 
 | Feature | Description |
 |---|---|
-| 📊 Interactive Dashboard | View active dataset totals, predicted fraud counts, transaction trends, and amount summaries |
-| 🔍 Single Prediction | Enter transaction features and estimate fraud probability |
+| 📊 Interactive Dashboard | View transaction counts, predicted fraud, legitimate transactions and transaction trends |
+| 🔍 Single Prediction | Enter transaction details and receive a fraud prediction and probability |
 | 📁 Batch Prediction | Upload a compatible CSV and generate predictions for multiple transactions |
-| 🔄 Shared Batch Results | Use the processed upload across Dashboard, Transactions, and Data Insights during the same session |
-| 💳 Transaction Explorer | Explore and filter the active transaction dataset |
-| 📈 Model Performance | View saved evaluation metrics, confusion-matrix information, and feature importance where available |
-| 🧠 Model Explainability | Display available feature-importance and SHAP artifacts |
-| 📥 Download Results | Export batch predictions as a CSV file |
+| 💳 Transaction Explorer | Explore and filter processed transactions |
+| 📈 Model Performance | Review precision, recall, F1-score, ROC-AUC, PR-AUC and the confusion matrix |
+| 🧠 Model Insights | Explore model-related insights and feature importance where available |
+| 🔌 REST API | Serve predictions through FastAPI endpoints |
+| 🧪 Automated Testing | Run tests for core project functionality |
 
-## 🌐 Live Application
+## 🖥️ Application Screenshots
 
-**Try FraudGuard:** https://fraud-guard63.streamlit.app/
+### Dashboard
+![FraudGuard dashboard](docs/screenshots/dashboard.png)
 
-The application is hosted on Streamlit Community Cloud. The Streamlit app loads the saved model artifact directly; a separately running local FastAPI server is not required for the deployed Streamlit application.
+### Batch Prediction
+Upload a CSV containing transaction features to generate predictions in bulk.
 
-## 🖥️ Application Preview
+![FraudGuard batch prediction](docs/screenshots/batch-prediction.png)
 
-Add your latest application screenshots to `docs/screenshots/` and update these paths when the images are committed.
+### Single Transaction Prediction
+Enter the transaction time, amount and PCA-transformed feature values to get a prediction.
 
-| Dashboard | Batch Prediction |
-|---|---|
-| ![FraudGuard Dashboard](docs/screenshots/dashboard.png) | ![Batch Prediction](docs/screenshots/batch-prediction.png) |
+![FraudGuard single prediction](docs/screenshots/single-prediction.png)
 
-| Single Prediction | Model Performance |
-|---|---|
-| ![Single Prediction](docs/screenshots/predict.png) | ![Model Performance](docs/screenshots/model-performance.png) |
+### Model Performance
+The application displays the saved model's evaluation metrics and test-set confusion matrix.
 
-## 🏗️ Application Architecture
+![FraudGuard model performance](docs/screenshots/model-performance.png)
+
+---
+
+## 🧪 Try It with the Included Sample Dataset
+
+A small sample CSV is included in the repository for quick testing:
+
+**File:** [`creditcard_1.csv`](creditcard_1.csv)
+
+The sample contains **1,500 transactions**:
+- 1,498 legitimate transactions (`Class = 0`)
+- 2 fraudulent transactions (`Class = 1`)
+- 30 model input features and 1 target column (`Class`)
+
+### Test it on the live app
+
+1. Open [FraudGuard](https://fraud-guard63.streamlit.app/).
+2. Select **Batch Prediction** from the sidebar.
+3. Download [`creditcard_1.csv`](https://raw.githubusercontent.com/ajity202/Credit-card-fraud-detection/main/creditcard_1.csv) from this repository if you do not already have it.
+4. Upload the CSV.
+5. Generate predictions.
+6. Return to the Dashboard, Transactions or Data Insights sections to explore the processed batch.
+
+### CSV format
+
+The model expects these 30 input columns:
+
+```text
+Time, V1, V2, V3, ... V28, Amount
+```
+
+The `Class` column is optional. If included, it is retained for comparison but is **not** passed to the model as an input feature.
+
+> **Important:** This is a small demonstration sample, not a representative dataset for model training or reliable performance evaluation. It contains only two fraud examples. Use the full dataset for serious experimentation and evaluation.
+
+## 🗂️ Dataset Information
+
+The project is based on the publicly available European credit card transactions dataset from the Machine Learning Group at Université Libre de Bruxelles (ULB).
+
+The original dataset contains:
+- 284,807 transactions
+- 492 fraudulent transactions
+- 284,315 legitimate transactions
+- 30 input features
+- 1 target column (`Class`)
+
+Features `V1` to `V28` are anonymized PCA-transformed variables.
+
+**Full dataset:** [Kaggle — Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+
+The full original dataset is not stored in this repository. The included `creditcard_1.csv` is a smaller sample for application testing.
+
+## 🏗️ System Architecture
 
 ```mermaid
 flowchart TD
-    A[User] --> B[FraudGuard Streamlit UI]
-    B --> C{Choose workflow}
-    C --> D[Single Transaction Input]
-    C --> E[Upload Batch CSV]
-    D --> F[Model Loader]
-    E --> G[CSV Validation]
-    G --> F
-    F --> H[Saved Random Forest Model]
-    H --> I[Fraud Probability]
-    I --> J[Threshold-based Prediction]
-    J --> K[Risk Level and Recommended Action]
-    K --> L[Prediction Results]
-    L --> M[Session State]
-    M --> N[Dashboard]
-    M --> O[Transactions]
-    M --> P[Data Insights]
-    L --> Q[Download Results CSV]
+    A[Credit Card CSV] --> B[Data Validation]
+    B --> C[Preprocessing]
+    C --> D[Trained Random Forest Model]
+    D --> E[Fraud Probability and Prediction]
+    E --> F[FastAPI Backend]
+    F --> G[Streamlit Frontend]
+    G --> H[Dashboard and Transaction Explorer]
+    G --> I[Single Prediction]
+    G --> J[Batch Prediction]
+    G --> K[Model Performance and Insights]
 ```
-
-## 📁 Batch CSV Testing
-
-You can test the deployed application without uploading the full Kaggle dataset.
-
-### Download the sample file
-
-Use the included smoke-test file:
-
-**[`data/sample_transactions.csv`](data/sample_transactions.csv)**
-
-It contains 10 synthetic transaction rows and all 30 model input columns:
-
-- `Time`
-- `V1` through `V28`
-- `Amount`
-
-The sample file intentionally does not include a `Class` column. FraudGuard generates its own predictions for the uploaded rows.
-
-> **Important:** These are synthetic placeholder values intended to verify CSV upload, feature validation, model inference, dashboard updates, and result export. They are not real card transactions, a representative evaluation dataset, or evidence of model accuracy. The predictions are model outputs and are not guaranteed to contain a fraud-positive example.
-
-### Test the sample in the live app
-
-1. Open the [FraudGuard live application](https://fraud-guard63.streamlit.app/).
-2. Select **Batch Prediction** from the sidebar.
-3. Upload `sample_transactions.csv`.
-4. Confirm that the file preview and row count appear.
-5. Click **Generate Predictions**.
-6. Review the prediction summary, fraud probability, risk level, and transaction results.
-7. Navigate to **Dashboard** to see the uploaded batch reflected in the overview and charts.
-8. Open **Transactions** and **Data Insights** to explore the active uploaded batch.
-9. Return to Batch Prediction and use **Download Prediction Results** to export the output CSV.
-
-### Expected application behaviour
-
-| Action | Expected behaviour |
-|---|---|
-| Upload a compatible CSV | The file is parsed and its required columns are validated |
-| Generate Predictions | FraudGuard calculates a probability and class prediction for each row |
-| Open Dashboard | Active batch totals and prediction-based summaries are shown |
-| Open Transactions | Uploaded rows and prediction status are available for inspection |
-| Open Data Insights | Charts and amount summaries use the uploaded batch where the required columns exist |
-| Upload another valid CSV | The new file replaces the active batch for the current session |
-| Download results | A CSV containing the original input columns and prediction output columns is provided |
-
-**Session behaviour:** Uploaded data and predictions are held in Streamlit session state. They are available while navigating pages in the same active session, but they are not permanently stored, shared with other visitors, or guaranteed to survive a session reset or app restart.
-
-### CSV format required by the model
-
-The uploaded CSV must contain these exact feature columns:
-
-```text
-Time,V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,
-V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,
-V21,V22,V23,V24,V25,V26,V27,V28,Amount
-```
-
-- All 30 feature columns are required.
-- Feature values must be numeric and non-missing.
-- `Class` is optional. If present, it is retained as a reference column and is not used as a model input.
-- The `V1`–`V28` columns are anonymized PCA-transformed features from the original dataset. Arbitrary values from unrelated datasets are not compatible with the model's feature semantics.
 
 ## 🧠 Machine Learning Workflow
 
-1. **Data Validation:** Check dataset structure, missing values, duplicates, and target distribution.
-2. **Exploratory Data Analysis:** Investigate transaction patterns, class distribution, and feature relationships.
-3. **Preprocessing:** Prepare transaction features for machine learning.
-4. **Class Imbalance Handling:** Apply SMOTE to training data where appropriate.
-5. **Model Training:** Train and compare classification models.
-6. **Model Evaluation:** Evaluate precision, recall, F1-score, ROC-AUC, and PR-AUC.
-7. **Threshold Optimization:** Select a classification threshold based on fraud-detection requirements.
-8. **Explainability:** Use feature importance and SHAP artifacts where available.
-9. **Model Serialization:** Save the trained model and related metadata.
-10. **Application Integration:** Load the saved model in the Streamlit application for single and batch inference.
+1. **Data Validation:** Check the dataset structure, missing values, duplicates and target distribution.
+2. **Exploratory Data Analysis:** Explore transaction patterns, class imbalance and feature relationships.
+3. **Preprocessing:** Prepare the input features for model training.
+4. **Class Imbalance Handling:** Use an imbalance-handling approach such as SMOTE on training data only.
+5. **Model Training:** Train classification models, including the Random Forest model used by the application.
+6. **Model Evaluation:** Evaluate precision, recall, F1-score, ROC-AUC and PR-AUC.
+7. **Thresholding:** Apply the configured classification threshold to convert fraud probabilities into predictions.
+8. **Deployment:** Load the saved model bundle and expose prediction functionality through the application.
 
-> **Methodological note:** SMOTE must be applied only to training data, ideally inside a cross-validation pipeline. Validation and final test data must remain untouched.
+> **Methodology note:** SMOTE must be applied only to training data (or inside training folds), never to the final test set. Keep test data untouched when evaluating model performance.
 
 ## 📊 Model Evaluation
 
-FraudGuard focuses on metrics appropriate for imbalanced classification:
+The deployed Model Performance page reads the evaluation metrics saved with the model bundle.
 
-| Metric | Purpose |
+| Metric | Current displayed result |
+|---|---:|
+| Precision | 95.08% |
+| Recall | 78.38% |
+| F1-score | 85.93% |
+| ROC-AUC | 96.92% |
+| PR-AUC | 84.28% |
+| Classification threshold | 0.70 |
+
+These are the saved test-set metrics shown in the current application screenshot. Results may differ if the model is retrained or the model bundle is replaced.
+
+| Metric | What it tells us |
 |---|---|
-| Precision | Of the transactions predicted as fraud, how many were actually fraud? |
-| Recall | Of all actual fraud transactions, how many were detected? |
+| Precision | How many transactions flagged as fraud were actually fraud |
+| Recall | How many actual fraud transactions were detected |
 | F1-score | Harmonic balance between precision and recall |
-| ROC-AUC | Ability to rank positive cases above negative cases |
-| PR-AUC | Precision-recall performance, especially useful for rare fraud cases |
-| Confusion Matrix | Shows true positives, false positives, true negatives, and false negatives |
-
-The deployed dashboard reads saved evaluation metrics from the model bundle. The model ROC-AUC displayed in the current deployed dashboard is **96.92%**. Refer to the saved test metrics and evaluation artifacts for the full evaluation context; do not interpret this value as a guarantee of real-world performance.
+| ROC-AUC | How well the model separates the two classes across thresholds |
+| PR-AUC | Precision-recall performance, particularly useful for rare fraud cases |
+| Confusion Matrix | Counts correct and incorrect predictions for each class |
 
 ## 🛠️ Technology Stack
 
@@ -184,10 +190,10 @@ The deployed dashboard reads saved evaluation metrics from the model bundle. The
 | Machine Learning | Scikit-learn, Imbalanced-learn |
 | Visualization | Matplotlib, Seaborn |
 | Explainable AI | SHAP |
-| Frontend / Deployment | Streamlit |
-| API Development | FastAPI, Uvicorn (available in the project for API workflows) |
-| Model Storage | Joblib |
+| Backend | FastAPI, Uvicorn |
+| Frontend | Streamlit |
 | Testing | Pytest |
+| Model Storage | Joblib |
 | Development | Jupyter Notebook, VS Code, Git, GitHub |
 
 ## 📂 Project Structure
@@ -197,45 +203,32 @@ Credit-card-fraud-detection/
 │
 ├── api/
 │   └── main.py
-│
 ├── app/
 │   ├── backend.py
 │   └── streamlit_app.py
-│
 ├── configs/
-│   └── config.yaml
-│
 ├── data/
-│   ├── raw/                 # Full reference dataset (not committed)
-│   ├── processed/
-│   └── sample_transactions.csv  # Small synthetic batch-test file
-│
+│   ├── raw/
+│   └── processed/
 ├── models/
-│   └── fraud_model.joblib   # Trained model bundle
-│
+│   └── fraud_model.joblib
 ├── notebooks/
-│   ├── baseline_models.ipynb
-│   ├── data_validation.ipynb
-│   ├── eda.ipynb
-│   └── model_training.ipynb
-│
 ├── reports/
 │   ├── figures/
 │   └── metrics/
-│
 ├── src/
 │   └── fraud_detection/
-│
 ├── tests/
-│
-├── .gitignore
+├── docs/
+│   └── screenshots/
+├── creditcard_1.csv
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
 └── requirements.txt
 ```
 
-## ⚙️ Installation & Local Setup
+## ⚙️ Run Locally
 
 ### 1. Clone the repository
 
@@ -253,31 +246,20 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
+**macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
 ### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If you are using the saved model bundle, ensure the dependencies required to load it (including `joblib`, NumPy, Pandas, and the compatible Scikit-learn version) are installed.
-
-### 4. Run the Streamlit application
-
-```bash
-streamlit run app/streamlit_app.py
-```
-
-Open:
-
-```text
-http://localhost:8501
-```
-
-The saved model bundle must be present at the path expected by `app/backend.py`, currently `models/fraud_model.joblib`.
-
-### Optional: Run the FastAPI backend
-
-The project also contains a FastAPI API module for API-based workflows. If you want to run it locally:
+### 4. Run the FastAPI backend
 
 ```bash
 uvicorn api.main:app --host 127.0.0.1 --port 8001 --reload
@@ -289,57 +271,46 @@ API documentation:
 http://127.0.0.1:8001/docs
 ```
 
-The current Streamlit app performs model inference directly through `app/backend.py`; the optional API process is not required to run the Streamlit dashboard.
+### 5. Run the Streamlit frontend
 
-## ☁️ Streamlit Community Cloud Deployment
+Make sure the frontend is configured to use the local API address:
 
-1. Push the project code and required deployment files to GitHub.
-2. Open [Streamlit Community Cloud](https://share.streamlit.io/).
-3. Connect the GitHub repository.
-4. Select the `main` branch.
-5. Set the app entrypoint to:
-
-   ```text
-   app/streamlit_app.py
-   ```
-
-6. Confirm that `requirements.txt` is in the repository root.
-7. Confirm that the model bundle exists at `models/fraud_model.joblib` and is accessible to the deployment.
-8. Deploy the application and review the app logs if dependency or model-loading errors occur.
-
-Do not commit the full original Kaggle dataset or private transaction data. Keep deployment dependencies in `requirements.txt`.
-
-## 📌 Original Dataset Information
-
-The project uses the publicly available European credit card transactions dataset.
-
-- 284,807 transactions
-- 492 fraudulent transactions
-- 284,315 legitimate transactions
-- 30 input features
-- 1 target column (`Class`)
-
-The features `V1` to `V28` are anonymized PCA-transformed features.
-
-**Dataset source:** [Kaggle — Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-
-The full dataset is not included in this repository because of its size. For training and reference-dataset analysis, download it from Kaggle and place it at:
-
-```text
-data/raw/creditcard.csv
+```python
+API_URL = "http://127.0.0.1:8001"
 ```
 
-## 🔐 Data Privacy & Responsible Use
+Start Streamlit in a second terminal:
 
-- Do not upload real cardholder data, card numbers, CVVs, PINs, passwords, or personally identifiable financial information.
-- Use anonymized, authorized data only.
-- The included sample file is synthetic and intended for software testing.
-- FraudGuard's prediction is a model-generated risk signal, not a confirmed fraud determination.
-- Do not use this student project as the sole basis for approving, declining, or blocking real financial transactions.
+```bash
+streamlit run app/streamlit_app.py --server.port 8501
+```
+
+Open:
+
+```text
+http://localhost:8501
+```
+
+> The trained model bundle must be available in `models/` before starting the application. The included sample CSV is for batch prediction testing; it is not used to retrain the model.
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | API status |
+| GET | `/health` | Health check |
+| GET | `/model-info` | Model information |
+| POST | `/predict` | Single transaction prediction |
+| POST | `/predict-batch` | Batch JSON prediction |
+| POST | `/predict-batch-csv` | CSV batch prediction |
+| GET | `/feature-importance` | Feature importance |
+| GET | `/shap-importance` | SHAP importance |
+| GET | `/dataset-info` | Dataset statistics |
+| GET | `/metrics` | Model evaluation metrics |
+
+Interactive API documentation is available at `/docs` when the API is running.
 
 ## 🧪 Run Tests
-
-Run the automated test suite from the project root:
 
 ```bash
 python -m pytest tests -v
@@ -347,57 +318,52 @@ python -m pytest tests -v
 
 ## 🔮 Future Improvements
 
-- Advanced model comparison and hyperparameter optimization
+- More extensive model comparison and hyperparameter optimization
 - Cost-sensitive fraud detection
 - Improved temporal validation
 - Real-time transaction monitoring
 - Model drift detection
+- CI/CD and deployment automation
 - Authentication and role-based access
 - Production-grade logging and monitoring
-- Expanded automated testing and CI/CD
 
 ## 🎯 Project Objectives
 
-FraudGuard explores the machine learning development lifecycle, from data preparation and model evaluation to an interactive deployed application.
+FraudGuard explores the machine learning development lifecycle, from dataset validation and model evaluation to API development and interactive application deployment.
 
-It demonstrates practical skills in:
-
-- Data Science and Machine Learning
-- Handling highly imbalanced datasets
+It demonstrates practical work in:
+- Data science and machine learning
+- Imbalanced classification
 - Model evaluation and explainable AI
-- Python application development
+- REST API development
 - Interactive dashboard development
-- Model serialization and inference
-- Software testing and project organization
-- Cloud deployment using Streamlit Community Cloud
+- Testing and project organization
 
 ## 👨‍💻 Author
 
-**Ajit Yadav**
-
+**Ajit Yadav**  
 Data Science Graduate | MSc Artificial Intelligence Student | Aspiring Data Scientist
 
-Interested in Machine Learning, Artificial Intelligence, Data Analytics, and building practical technology solutions.
+Interested in Machine Learning, Artificial Intelligence, Data Analytics and building practical technology solutions.
 
 - GitHub: [@ajity202](https://github.com/ajity202)
-- LinkedIn: [Connect with me](www.linkedin.com/in/ajit-yadav-245b36276)
-
-If you find this project interesting, feel free to explore the repository, try the live demo, share feedback, or connect with me.
+- Project: [FraudGuard — Credit Card Fraud Detection](https://github.com/ajity202/Credit-card-fraud-detection)
+- Live Demo: [fraud-guard63.streamlit.app](https://fraud-guard63.streamlit.app/)
 
 ## ⭐ Support the Project
 
-If FraudGuard helped you explore an end-to-end machine learning workflow:
+If you find FraudGuard useful or interesting:
 
 - ⭐ Star this repository
 - 🍴 Fork it and experiment
 - 💬 Open an issue with suggestions
-- 🤝 Share your feedback
+- 🤝 Share feedback and ideas
 
-Contributions and constructive feedback are welcome!
+Contributions and feedback are welcome!
 
 ---
 
 <p align="center">
-  <strong>FraudGuard — Detect Today. Safer Tomorrow. 🛡️</strong><br>
-  <sub>Built with Python, Machine Learning, and Streamlit.</sub>
+  <strong>FraudGuard — Detect Today. Safer Tomorrow. 🛡️</strong><br/>
+  <sub>Built with Python, Machine Learning, FastAPI and Streamlit.</sub>
 </p>
