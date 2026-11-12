@@ -60,22 +60,22 @@ The deployed application includes:
 ## 🖥️ Application Screenshots
 
 ### Dashboard
-![FraudGuard dashboard](docs/screenshots/dashboard.png)
+![FraudGuard dashboard](data/screenshots/image1.png)
 
 ### Batch Prediction
 Upload a CSV containing transaction features to generate predictions in bulk.
 
-![FraudGuard batch prediction](docs/screenshots/batch-prediction.png)
+![FraudGuard batch prediction](data/screenshots/image2.png)
 
 ### Single Transaction Prediction
 Enter the transaction time, amount and PCA-transformed feature values to get a prediction.
 
-![FraudGuard single prediction](docs/screenshots/single-prediction.png)
+![FraudGuard single prediction](data/screenshots/image3.png)
 
 ### Model Performance
 The application displays the saved model's evaluation metrics and test-set confusion matrix.
 
-![FraudGuard model performance](docs/screenshots/model-performance.png)
+![FraudGuard model performance](data/screenshots/image4.png)
 
 ---
 
